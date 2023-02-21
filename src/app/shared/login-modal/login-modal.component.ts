@@ -13,7 +13,7 @@ export class LoginModalComponent implements OnInit {
   @Input() modalStyle: any;
   @Input() modalTitle: any;
   @Input() modalBody: any;
-  @Input() modalButtonColor: any;
+  @Input() modalButtonColor: any = '';
 
   private modalRef!: NgbModalRef;
 
@@ -27,7 +27,7 @@ export class LoginModalComponent implements OnInit {
 
   open(): Promise<boolean> {
     return new Promise<boolean>(resolve => {
-      this.modalRef = this.modalService.open(this.modalContent, { size: 'sm' })
+      this.modalRef = this.modalService.open(this.modalContent, { size: 'md' })
       this.modalRef.result.then((result) => {
         console.log(result);
         this.newConfirmationEvent.emit(result);

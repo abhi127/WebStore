@@ -9,12 +9,11 @@
             <div class="collapse navbar-collapse" id="navbar-bar">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active" href="#">Home</a>
-                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active" href="#">Login</a>
+                    <a class="nav-link" (click)="open()"  routerLinkActive="router-link-active" href="#">Login</a>
                 </div>
             </div>
         </div>
     </nav>
 </div>
-<script>
-
-</script>
+<app-login-modal #confirmationModal (newConfirmationEvent)="getConfirmationValue($event)" [modalStyle]="modalStyle"
+  [modalTitle]="modalTitle" [modalBody]="modalBody" [modalButtonColor]="modalButtonColor"></app-login-modal>

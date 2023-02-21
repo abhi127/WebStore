@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LoginModalComponent } from '../../shared/login-modal/login-modal.component'
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('confirmationModal') private modalComponent!: LoginModalComponent;
 
-  constructor() { }
+  modalStyle: string = 'modal-style-success';
+  modalTitle: string = 'LOGIN';
+  modalBody: string = 'This is a Success Confirmation message';
+  modalButtonColor: string = 'btn-success';
 
-  ngOnInit(): void {
+  ngOnInit(){
+
+  }
+  async openModal() {
+    return await this.modalComponent.open();
   }
 
+  getConfirmationValue(value: any) {
+    if (value == 'Save click') {
+      console.log(value);
+    }
+  }
+
+  open() {
+    this.openModal();
+  }
 }
